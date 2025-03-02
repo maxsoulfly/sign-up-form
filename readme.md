@@ -12,12 +12,14 @@ This project is a simple sign-up form built with HTML and CSS. It is part of the
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/sign-up-form.git
+    git clone https://github.com/maxsoulfly/sign-up-form.git
     ```
 2. Navigate to the project directory:
     ```bash
     cd sign-up-form
     ```
+    3. Open the project in a live server or use the following link for a live preview:
+       [Live Preview](https://maxsoulfly.github.io/sign-up-form/)
 
 ## Usage
 
