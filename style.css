@@ -1,24 +1,20 @@
 @font-face {
 	font-family: "Norse Bold";
-	/* Custom name for the font */
 	src: url("/assets/Norse-Bold.otf") format("opentype");
-	/* Path to your font file */
 	font-weight: normal;
 	font-style: normal;
 }
 
 :root {
 	--padding: 2rem;
-
-	/* Colors */
 	--body-bg-color: #090903;
 	--main-bg-color: #f9fafb;
 	--form-bg-color: #fff;
 	--main-color: #596d48;
 	--main-color-hover: #4c5c3d;
+	--input-focus-color: #4b71de;
+	--input-error-color: #d67979;
 }
-
-/* Apply the font */
 
 body {
 	font-family: sans-serif;
@@ -29,12 +25,47 @@ body {
 	padding: 0;
 }
 
+input {
+	border: 1px solid #e5e7eb;
+	border-radius: 5px;
+	transition: border 0.2s ease-in-out; /* Smooth transition */
+
+	&:focus {
+		border: 1px solid var(--input-focus-color);
+	}
+
+	&:invalid {
+		border: 1px solid var(--input-error-color);
+	}
+
+	&:-webkit-autofill,
+	&:-webkit-autofill:focus {
+		background-color: #eef0ec !important;
+		border: 1px solid var(--main-color) !important;
+		box-shadow: 0 0 0px 1000px #eef0ec inset !important;
+	}
+}
+
 .container {
 	display: flex;
 	height: 100vh;
-	/* margin : 0; */
-
 	flex-direction: column;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		width: 100%;
+		height: 100%;
+		min-height: 100vh;
+		margin: auto;
+	}
+
+	@media (min-width: 1300px) {
+		width: 85%;
+	}
+
+	@media (min-width: 1400px) {
+		width: 70%;
+	}
 }
 
 header {
@@ -45,49 +76,63 @@ header {
 	justify-content: center;
 	width: 100%;
 	height: 50%;
-}
 
-header .logo {
-	color: #fff;
-	font-family: "Norse Bold", sans-serif;
-	font-size: 3em;
-	text-align: center;
-	padding: 1em;
-	background-color: rgba(0, 0, 0, 0.5);
-	height: auto;
-	padding: 0.5em;
-	margin-top: 10%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	& h1 {
-		font-size: 2em;
-		padding: 0;
-		margin: 0;
-		/* align-self: center; */
-	}
-
-	& img {
-		width: 80px;
-		height: 100px;
-	}
-}
-
-header .credits {
-	color: #fff;
-	text-align: center;
-	padding: 1em;
-	font-size: 1em;
-	margin-top: auto;
-
-	& a {
+	.logo {
 		color: #fff;
+		font-family: "Norse Bold", sans-serif;
+		font-size: 3em;
+		text-align: center;
+		padding: 1em;
+		background-color: rgba(0, 0, 0, 0.5);
+		height: auto;
+		padding: 0.5em;
+		margin-top: 10%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		h1 {
+			font-size: 2em;
+			padding: 0;
+			margin: 0;
+		}
+
+		img {
+			width: 80px;
+			height: 100px;
+		}
 	}
 
-	& a:hover {
-		color: #f4f4f4;
-		text-decoration: none;
+	.credits {
+		color: #fff;
+		text-align: center;
+		padding: 1em;
+		font-size: 1em;
+		margin-top: auto;
+
+		a {
+			color: #fff;
+
+			&:hover {
+				color: #f4f4f4;
+				text-decoration: none;
+			}
+		}
+	}
+
+	@media (min-width: 768px) {
+		height: auto;
+		min-height: 100vh;
+		justify-content: space-between;
+		width: 50%;
+
+		.logo {
+			margin-top: 50%;
+		}
+
+		.credits {
+			margin-top: 100%;
+		}
 	}
 }
 
@@ -96,22 +141,28 @@ main {
 	flex-direction: column;
 	background-color: var(--main-bg-color);
 
-	& .intro {
+	.intro {
 		font-size: 1.5em;
 		margin: 0;
 		font-weight: bold;
 		padding: var(--padding);
+
+		p {
+			@media (min-width: 768px) {
+				padding-right: 3em;
+			}
+		}
 	}
 
-	& .form {
+	.form {
 		display: flex;
 		flex-direction: column;
 		margin-top: 1em;
 		background-color: var(--form-bg-color);
 		padding: var(--padding);
-		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Bottom shadow */
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 
-		& label {
+		label {
 			font-size: 0.8em;
 			color: #555;
 			text-transform: uppercase;
@@ -120,26 +171,64 @@ main {
 			width: 100%;
 		}
 
-		& input {
+		input {
 			padding: 0.5em;
 			margin: 0.5em 0;
-			border: 1px solid #e5e7eb;
 			border-radius: 5px;
 			display: block;
 			width: 100%;
 			box-sizing: border-box;
 		}
 
-		& button:hover {
+		button:hover {
 			background-color: #555;
+		}
+
+		@media (min-width: 768px) {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 1em 1em;
+
+			h2 {
+				width: 100%;
+			}
+
+			.form-title {
+				width: 100%;
+			}
+
+			.form-row {
+				width: calc(50% - 1em) - 1em;
+				min-width: 200px;
+
+				input {
+					width: 100%;
+				}
+			}
+		}
+
+		@media (min-width: 800px) {
+			gap: 1em 4em;
+		}
+
+		@media (min-width: 1024px) {
+			.form-row {
+				width: 20%;
+				min-width: 280px;
+			}
+		}
+
+		@media (min-width: 1400px) {
+			.form-row {
+			}
 		}
 	}
 
-	& footer {
+	footer {
 		padding: var(--padding);
-		/* background-color: var(--main-bg-color); */
 
-		& button {
+		button {
 			padding: 1em 2em;
 			font-weight: bold;
 			border: 1px solid #ccc;
@@ -147,134 +236,21 @@ main {
 			background-color: var(--main-color);
 			color: #fff;
 			cursor: pointer;
+
+			&:hover {
+				background-color: var(--main-color-hover);
+			}
 		}
 
-		& button:hover {
-			background-color: var(--main-color-hover);
-		}
-
-		& a {
+		a {
 			color: var(--main-color);
 			text-decoration: none;
 			font-weight: bold;
-		}
 
-		& a:hover {
-			color: var(--main-color-hover);
-			text-decoration: underline;
-		}
-	}
-}
-
-/* Responsive design */
-
-@media (min-width: 768px) {
-	.container {
-		flex-direction: row;
-		width: 100%;
-		height: 100%;
-		min-height: 100vh;
-		margin: auto;
-	}
-
-	header {
-		height: auto;
-		min-height: 100vh;
-		justify-content: space-between;
-		width: 50%;
-	}
-
-	header .logo {
-		margin-top: 50%;
-	}
-
-	header .credits {
-		margin-top: 100%;
-	}
-
-	main {
-	}
-
-	main .intro {
-		& p {
-			padding-right: 3em;
-		}
-	}
-
-	main .form {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		gap: 1em 1em; /* row-gap (bottom) | column-gap (right) */
-
-		& h2 {
-			width: 100%;
-		}
-
-		& .form-title {
-			width: 100%;
-		}
-
-		& .form-row {
-			width: calc(50% - 1em)-1em; /* Two columns with gap */
-			min-width: 200px;
-
-			& input {
-				width: 100%;
+			&:hover {
+				color: var(--main-color-hover);
+				text-decoration: underline;
 			}
-		}
-	}
-
-	main footer {
-	}
-}
-
-@media (min-width: 800px) {
-	main .form {
-		gap: 1em 4em; /* row-gap (bottom) | column-gap (right) */
-	}
-}
-@media (min-width: 1024px) {
-	.container {
-		/* width: 90%; */
-	}
-
-	main .form {
-		& .form-row {
-			width: 20%;
-			min-width: 280px;
-
-			/*             
-            margin-right: 2em; 
-            margin-bottom: 1em;  */
-
-			& input {
-			}
-		}
-	}
-
-	@media (min-width: 1300px) {
-		.container {
-			width: 85%;
-		}
-	}
-
-	@media (min-width: 1400px) {
-		main .form {
-			& .form-row {
-				/* width    : 20%; */
-				/* min-width: 280px; */
-
-				/* margin-right: 2em;
-				margin-bottom: 1em; */
-
-				& input {
-				}
-			}
-		}
-
-		.container {
-			width: 70%;
 		}
 	}
 }
