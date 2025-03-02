@@ -1,251 +1,280 @@
 @font-face {
-    font-family: 'Norse Bold';
-    /* Custom name for the font */
-    src        : url('/assets/Norse-Bold.otf') format('opentype');
-    /* Path to your font file */
-    font-weight: normal;
-    font-style : normal;
+	font-family: "Norse Bold";
+	/* Custom name for the font */
+	src: url("/assets/Norse-Bold.otf") format("opentype");
+	/* Path to your font file */
+	font-weight: normal;
+	font-style: normal;
 }
 
 :root {
-    --padding: 2rem;
+	--padding: 2rem;
+
+	/* Colors */
+	--body-bg-color: #090903;
+	--main-bg-color: #f9fafb;
+	--form-bg-color: #fff;
+	--main-color: #596d48;
+	--main-color-hover: #4c5c3d;
 }
 
 /* Apply the font */
 
 body {
-    font-family     : sans-serif;
-    font-size       : 16px;
-    color           : #333;
-    background-color: #090903;
-    margin          : 0;
-    padding         : 0;
-
+	font-family: sans-serif;
+	font-size: 16px;
+	color: #333;
+	background-color: var(--body-bg-color);
+	margin: 0;
+	padding: 0;
 }
 
 .container {
-    display   : flex;
-    height    : 100vh;
-    /* margin : 0; */
+	display: flex;
+	height: 100vh;
+	/* margin : 0; */
 
-    flex-direction: column;
+	flex-direction: column;
 }
 
 header {
-    background-image: url('/assets/bg.jpg');
-    background-size : cover;
-    display         : flex;
-    flex-direction  : column;
-    justify-content : center;
-    width           : 100%;
-    height          : 50%;
+	background-image: url("/assets/bg.jpg");
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	height: 50%;
 }
 
 header .logo {
-    color           : #fff;
-    font-family     : 'Norse Bold', sans-serif;
-    font-size       : 3em;
-    text-align      : center;
-    padding         : 1em;
-    background-color: rgba(0, 0, 0, 0.5);
-    height          : auto;
-    padding         : 0.5em;
-    margin-top      : 10%;
-    display         : flex;
-    justify-content : center;
-    align-items     : center;
+	color: #fff;
+	font-family: "Norse Bold", sans-serif;
+	font-size: 3em;
+	text-align: center;
+	padding: 1em;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: auto;
+	padding: 0.5em;
+	margin-top: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
+	& h1 {
+		font-size: 2em;
+		padding: 0;
+		margin: 0;
+		/* align-self: center; */
+	}
 
-    & h1 {
-        font-size    : 2em;
-        padding      : 0;
-        margin       : 0;
-        /* align-self: center; */
-    }
-
-    & img {
-        width : 80px;
-        height: 100px;
-    }
+	& img {
+		width: 80px;
+		height: 100px;
+	}
 }
 
 header .credits {
-    color     : #fff;
-    text-align: center;
-    padding   : 1em;
-    font-size : 1em;
-    margin-top: auto;
+	color: #fff;
+	text-align: center;
+	padding: 1em;
+	font-size: 1em;
+	margin-top: auto;
 
-    & a {
-        color: #fff;
-    }
+	& a {
+		color: #fff;
+	}
 
-    & a:hover {
-        color          : #f4f4f4;
-        text-decoration: none;
-    }
+	& a:hover {
+		color: #f4f4f4;
+		text-decoration: none;
+	}
 }
 
 main {
-    display         : flex;
-    flex-direction  : column;
-    background-color: #f9fafb;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--main-bg-color);
 
+	& .intro {
+		font-size: 1.5em;
+		margin: 0;
+		font-weight: bold;
+		padding: var(--padding);
+	}
 
-    & .intro {
-        font-size  : 1.5em;
-        margin     : 0;
-        font-weight: bold;
-        padding    : var(--padding);
-    }
+	& .form {
+		display: flex;
+		flex-direction: column;
+		margin-top: 1em;
+		background-color: var(--form-bg-color);
+		padding: var(--padding);
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Bottom shadow */
 
-    & .form {
-        display         : flex;
-        flex-direction  : column;
-        margin-top      : 1em;
-        background-color: #ffffff;
-        padding         : var(--padding);
-        box-shadow      : 4px 4px 10px rgba(0, 0, 0, 0.3);
+		& label {
+			font-size: 0.8em;
+			color: #555;
+			text-transform: uppercase;
+			font-weight: bold;
+			display: block;
+			width: 100%;
+		}
 
+		& input {
+			padding: 0.5em;
+			margin: 0.5em 0;
+			border: 1px solid #e5e7eb;
+			border-radius: 5px;
+			display: block;
+			width: 100%;
+			box-sizing: border-box;
+		}
 
-        & label {
-            font-size     : .8em;
-            color         : #555;
-            text-transform: uppercase;
-            font-weight   : bold;
-            display       : block;
-            width         : 100%;
-        }
+		& button:hover {
+			background-color: #555;
+		}
+	}
 
-        & input {
-            padding      : 0.5em;
-            margin       : 0.5em 0;
-            border       : 1px solid #E5E7EB;
-            border-radius: 5px;
-            display      : block;
-            width        : 100%;
-            box-sizing   : border-box;
+	& footer {
+		padding: var(--padding);
+		/* background-color: var(--main-bg-color); */
 
-        }
+		& button {
+			padding: 1em 2em;
+			font-weight: bold;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: var(--main-color);
+			color: #fff;
+			cursor: pointer;
+		}
 
+		& button:hover {
+			background-color: var(--main-color-hover);
+		}
 
-        & button:hover {
-            background-color: #555;
-        }
+		& a {
+			color: var(--main-color);
+			text-decoration: none;
+			font-weight: bold;
+		}
 
-
-    }
-
-
-    & footer {
-
-        padding: var(--padding);
-
-        & button {
-            padding         : 1em 2em;
-            font-weight     : bold;
-            border          : 1px solid #ccc;
-            border-radius   : 5px;
-            background-color: #596D48;
-            color           : #fff;
-            cursor          : pointer;
-        }
-
-        & button:hover {
-            background-color: #4c5c3d;
-        }
-
-        & a {
-            color          : #596D48;
-            text-decoration: none;
-            font-weight    : bold;
-        }
-
-        & a:hover {
-            color          : #4c5c3d;
-            text-decoration: underline;
-        }
-    }
+		& a:hover {
+			color: var(--main-color-hover);
+			text-decoration: underline;
+		}
+	}
 }
-
 
 /* Responsive design */
 
-
 @media (min-width: 768px) {
-    .container {
-        flex-direction: row;
-        width         : 100%;
-        height        : 100vh;
-        min-height    : 100%;
-        margin        : auto;
+	.container {
+		flex-direction: row;
+		width: 100%;
+		height: 100%;
+		min-height: 100vh;
+		margin: auto;
+	}
 
-    }
+	header {
+		height: auto;
+		min-height: 100vh;
+		justify-content: space-between;
+		width: 50%;
+	}
 
-    header {
-        height         : 100vh;
-        justify-content: space-between;
-        width          : 50%;
-    }
+	header .logo {
+		margin-top: 50%;
+	}
 
-    header .logo {
-        margin-top: 50%;
-    }
+	header .credits {
+		margin-top: 100%;
+	}
 
-    header .credits {
-        margin-top: 100%;
-    }
+	main {
+	}
 
-    main {}
+	main .intro {
+		& p {
+			padding-right: 3em;
+		}
+	}
 
-    main .intro {}
+	main .form {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 1em 1em; /* row-gap (bottom) | column-gap (right) */
 
-    main .form {
-        display       : flex;
-        flex-direction: row;
-        flex-wrap     : wrap;
-        gap           : 2em;
+		& h2 {
+			width: 100%;
+		}
 
-        & h2 {
-            width: 100%;
-        }
+		& .form-title {
+			width: 100%;
+		}
 
-        & .form-title {
-            width: 100%;
-        }
+		& .form-row {
+			width: calc(50% - 1em)-1em; /* Two columns with gap */
+			min-width: 200px;
 
-        & .form-row {
-            width    : 15%;
-            min-width: 300px;
+			& input {
+				width: 100%;
+			}
+		}
+	}
 
-            & input {
-                width: 100%;
-            }
-        }
-
-
-    }
-
-    main footer {}
+	main footer {
+	}
 }
 
+@media (min-width: 800px) {
+	main .form {
+		gap: 1em 4em; /* row-gap (bottom) | column-gap (right) */
+	}
+}
 @media (min-width: 1024px) {
-    main .form {
-        gap: 1em;
+	.container {
+		/* width: 90%; */
+	}
 
-        & .form-row {
-            width    : 20%;
-            min-width: 280px;
+	main .form {
+		& .form-row {
+			width: 20%;
+			min-width: 280px;
 
-            & input {
-                width: 100%;
-            }
-        }
-    }
+			/*             
+            margin-right: 2em; 
+            margin-bottom: 1em;  */
 
-    @media (min-width: 1400px) {
+			& input {
+			}
+		}
+	}
 
-        .container {
-            width: 70%;
-        }
-    }
+	@media (min-width: 1300px) {
+		.container {
+			width: 85%;
+		}
+	}
+
+	@media (min-width: 1400px) {
+		main .form {
+			& .form-row {
+				/* width    : 20%; */
+				/* min-width: 280px; */
+
+				/* margin-right: 2em;
+				margin-bottom: 1em; */
+
+				& input {
+				}
+			}
+		}
+
+		.container {
+			width: 70%;
+		}
+	}
+}
